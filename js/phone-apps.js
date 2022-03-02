@@ -6,24 +6,55 @@ const searchPhone = () => {
     // clear search box
     searchField.value = '';
 
-    // load data
-    const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
-    fetch(url)
-        .then(res => res.json())
-        .then(phone => displaySearchResult(phone.data));
+    if (searchText == '') {
+        const searchResult = document.getElementById('search-result');
+        const div = document.createElement('div');
+        // div.classList.add('col');
+        div.innerHTML = `
+           <div class="d-flex justify-content-center">
+           <p class = " fs-4" >
+           Please Write  Something To display
+       </p>
+           </div>
+        `;
+        searchResult.appendChild(div);
+    }
+    else {
+        const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
+        fetch(url)
+            .then(res => res.json())
+            .then(phone => displaySearchResult(phone.data));
 
+    }
 }
 
 // search result 
 const displaySearchResult = data => {
     const searchResult = document.getElementById('search-result');
-    data.forEach(data => {
-        // clear search result 
-        searchResult.textContent = '';
+
+    if (data.length == 0) {
+        const searchResult = document.getElementById('search-result');
         const div = document.createElement('div');
         div.classList.add('col');
-        // const slug = data.slug
+
         div.innerHTML = `
+        <div class="d-flex justify-content-center">
+          <p class = " fs-4" >
+                No result Found
+          </p>
+        </div>
+        `;
+        searchResult.appendChild(div);
+    }
+
+    else {
+        data.forEach(data => {
+            // clear search result 
+            searchResult.textContent = '';
+            const div = document.createElement('div');
+            div.classList.add('col');
+
+            div.innerHTML = `
         <div  class="card h-80 shadow p-3 mb-5 bg-body rounded">
                 <img src="${data.image}" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -35,8 +66,9 @@ const displaySearchResult = data => {
                 </div>
             </div>
         `
-        searchResult.appendChild(div);
-    });
+            searchResult.appendChild(div);
+        });
+    }
 
 };
 
@@ -65,6 +97,7 @@ const displayPhoneDetails = data => {
         </p>
         <span class="">
             ${data.releaseDate}
+         
         </span>
         <table class="table table-striped ">
         <thead>

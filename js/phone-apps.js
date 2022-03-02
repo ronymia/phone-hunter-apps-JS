@@ -97,7 +97,6 @@ const displayPhoneDetails = data => {
         </p>
         <span class="">
             ${data.releaseDate}
-         
         </span>
         <table class="table table-striped ">
         <thead>

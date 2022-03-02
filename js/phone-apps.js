@@ -53,6 +53,18 @@ const displayPhoneDetails = data => {
     const div = document.createElement('div')
     div.classList.add('card');
     div.innerHTML = `
-        
-    `
+    <img src="${data.image}" class="card-img-top" alt="...">
+    <div class="card-body">
+        <p class="fs-4 text-center">
+            ${data.slug}
+        </p>
+        <span class="">
+            ${data.releaseDate}
+        </span>
+        <p>
+        ${data.mainFeatures}
+        </p>
+    </div>
+    `;
+    phoneDetails.appendChild(div)
 }

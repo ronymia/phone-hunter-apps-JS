@@ -14,9 +14,10 @@ const searchPhone = () => {
 const displaySearchResult = data => {
     const searchResult = document.getElementById('search-result');
     data.forEach(data => {
-        console.log(data);
+        // console.log(data.slug);
         const div = document.createElement('div');
         div.classList.add('col');
+        // const slug = data.slug
         div.innerHTML = `
         <div  class="card h-80 shadow p-3 mb-5 bg-body rounded">
                 <img src="${data.image}" class="card-img-top" alt="...">
@@ -24,7 +25,7 @@ const displaySearchResult = data => {
                     <h5 class="card-title ">${data.brand}</h5>
                     <div class ="d-flex justify-content-between">
                     <span class="card-text">${data.phone_name}</span>
-                    <button onclick="loadPhoneDetails(${data.slug})" type="button" class="btn btn-light">see details</button>
+                    <button onclick="loadPhoneDetails('${data.slug}')" type="button" class="btn btn-light">see details</button>
                     </div>
                 </div>
             </div>
@@ -35,6 +36,13 @@ const displaySearchResult = data => {
 };
 
 // details data
-const loadPhoneDetails = phoneId => {
-    console.log(phoneId);
+
+
+const loadPhoneDetails = (phoneId) => {
+    // console.log(phoneId);
+    const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`
+    // console.log(url)
+    fetch(url)
+        .then(res => res.json())
+        .then(phone => console.log(phone.data))
 }

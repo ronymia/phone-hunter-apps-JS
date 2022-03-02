@@ -44,5 +44,15 @@ const loadPhoneDetails = (phoneId) => {
     // console.log(url)
     fetch(url)
         .then(res => res.json())
-        .then(phone => console.log(phone.data))
+        .then(phone => displayPhoneDetails(phone.data))
+}
+
+const displayPhoneDetails = data => {
+    console.log(data);
+    const phoneDetails = document.getElementById('phone-details')
+    const div = document.createElement('div')
+    div.classList.add('card');
+    div.innerHTML = `
+        
+    `
 }

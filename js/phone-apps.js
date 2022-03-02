@@ -1,3 +1,4 @@
+// search box
 const searchPhone = () => {
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
@@ -8,6 +9,8 @@ const searchPhone = () => {
         .then(phone => displaySearchResult(phone.data));
 
 }
+
+// search result 
 const displaySearchResult = data => {
     const searchResult = document.getElementById('search-result');
     data.forEach(data => {
@@ -30,3 +33,5 @@ const displaySearchResult = data => {
     });
 
 };
+
+// details data

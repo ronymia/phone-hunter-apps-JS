@@ -1,8 +1,6 @@
 
 const searchPhone = () => {
     const searchText = document.getElementById("search-field").value;
-    // console.log(searchFeild);
-
     // phones API
     fetch(` https://openapi.programming-hero.com/api/phones?search=${searchText}`)
         .then(res => res.json())
@@ -28,7 +26,7 @@ const loadPhones = (phones) => {
                 <h4 class="card-title text-center">${phone.brand}</h4>
                 <div>
                     <h2>${phone.phone_name}</h2>
-                    <button onclick="phoneDetail('${phone.slug}')">see details</button>
+                    <button onclick="loadPhoneDetail('${phone.slug}')">see details</button>
                 </div>
             </div>
         </div>
@@ -42,5 +40,10 @@ const loadPhones = (phones) => {
 const loadPhoneDetail = (phoneId) => {
     fetch(`https://openapi.programming-hero.com/api/phone/${phoneId}`)
         .then(res => res.json())
-        .then(data => phoneDetail(data.data));
-};
+        .then(data => phoneDetail(data.data))
+}
+
+// displying detail
+const phoneDetail = phone => {
+    console.log(phone);
+}

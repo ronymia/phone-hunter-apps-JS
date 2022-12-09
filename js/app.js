@@ -1,17 +1,24 @@
 
 const searchPhone = async (searchText) => {
-    const searchText = document.getElementById("search-field").value;
     await fetch(` https://openapi.programming-hero.com/api/phones?search=${searchText}`)
         .then(res => res.json())
         .then(data => loadPhones(data.data))
 };
 
-// seearch input field enter key hander
-document.getElementById("search-field").addEventListener("keyup", function (event) {
+// Search input field click hander
+document.getElementById("search-phone").addEventListener("click", function (event) {
+    const searchText = document.getElementById("search-field").value;
+    searchPhone(searchText);
+});
+
+// Search input field enter key hander
+document.getElementById("search-field").addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
-        searchPhone()
+        const searchText = document.getElementById("search-field").value;
+        searchPhone(searchText);
     };
 });
+
 
 // search result event
 const loadPhones = (phones) => {
@@ -48,3 +55,6 @@ const loadPhoneDetail = async (phoneId) => {
 const phoneDetail = phone => {
     console.log(phone);
 }
+
+// default
+searchPhone("apple")

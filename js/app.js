@@ -1,25 +1,27 @@
 
-const searchPhone = () => {
+const searchPhone = async (searchText) => {
     const searchText = document.getElementById("search-field").value;
-    // phones API
-    fetch(` https://openapi.programming-hero.com/api/phones?search=${searchText}`)
+    await fetch(` https://openapi.programming-hero.com/api/phones?search=${searchText}`)
         .then(res => res.json())
         .then(data => loadPhones(data.data))
 };
 
+// seearch input field enter key hander
+document.getElementById("search-field").addEventListener("keyup", function (event) {
+    if (event.key === "Enter") {
+        searchPhone()
+    };
+});
+
 // search result event
 const loadPhones = (phones) => {
-    // console.log(phones);
-
+    // const dataLimit = phones.length = 10;
     phones.forEach(phone => {
-        // console.log(phone);
-
-
-        const phones = document.getElementById("phones");
+        const phonesConatiner = document.getElementById("phones-container");
+        // phonesConatiner.textContent = '';
         const div = document.createElement("div")
         div.classList.add = "col";
-        div.innerHTML =
-            `
+        div.innerHTML = `
         <div class="card h-100">
             <img src="${phone.image}" class="card-img-top" alt="#">
             <div class="card-body">
@@ -31,14 +33,13 @@ const loadPhones = (phones) => {
             </div>
         </div>
         `
-        // phones.textContent = ''
-        phones.appendChild(div);
+        phonesConatiner.appendChild(div);
     });
 };
 
 // load phone API
-const loadPhoneDetail = (phoneId) => {
-    fetch(`https://openapi.programming-hero.com/api/phone/${phoneId}`)
+const loadPhoneDetail = async (phoneId) => {
+    await fetch(`https://openapi.programming-hero.com/api/phone/${phoneId}`)
         .then(res => res.json())
         .then(data => phoneDetail(data.data))
 }

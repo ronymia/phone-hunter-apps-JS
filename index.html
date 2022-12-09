@@ -26,9 +26,9 @@
             <section>
                 <div
                     class="input-group mb-3 w-50 mx-auto">
-                    <input id="search-field"
+                    <input type="text"
+                        id="search-field"
                         class="form-control"
-                        type="text"
                         placeholder="Search Your Phone">
                     <button
                         onclick="searchPhone()"
@@ -36,8 +36,13 @@
                         class="btn btn-info">Button</button>
                 </div>
 
+                <div id="phone-detail">
+
+                </div>
+
                 <!-- search result  -->
-                <div class="m-3">
+                <div id="phones"
+                    class="row row-cols-1 row-cols-md-4 g-4">
 
                 </div>
             </section>

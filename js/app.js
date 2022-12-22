@@ -57,4 +57,4 @@ const phoneDetail = phone => {
 }
 
 // default
-searchPhone("apple")
+searchPhone("apple");

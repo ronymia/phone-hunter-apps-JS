@@ -37,7 +37,7 @@ const loadPhones = (phones) => {
         const div = document.createElement("div")
         div.classList.add = "col";
         div.innerHTML = `
-        <div class="product">
+        <div class="product-card">
             <div class="image">
                 <img src="${phone.image}" alt="${phone.phone_name}">
             </div>

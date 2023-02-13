@@ -19,24 +19,42 @@ document.getElementById("search-field").addEventListener("keypress", function (e
     };
 });
 
+{/* <h4 class="card-title text-center">${phone.brand}</h4> */ }
+{/* <div class="card-body">
 
+    <div>
+        <h2>${phone.phone_name}</h2>
+        <button onclick="loadPhoneDetail('${phone.slug}')">see details</button>
+    </div>
+</div> */}
 // search result event
 const loadPhones = (phones) => {
     // const dataLimit = phones.length = 10;
     phones.forEach(phone => {
+        console.log(phone);
         const phonesConatiner = document.getElementById("phones-container");
         // phonesConatiner.textContent = '';
         const div = document.createElement("div")
         div.classList.add = "col";
         div.innerHTML = `
-        <div class="card h-100">
-            <img src="${phone.image}" class="card-img-top" alt="#">
-            <div class="card-body">
-                <h4 class="card-title text-center">${phone.brand}</h4>
-                <div>
-                    <h2>${phone.phone_name}</h2>
-                    <button onclick="loadPhoneDetail('${phone.slug}')">see details</button>
-                </div>
+        <div class="product">
+            <div class="image">
+                <img src="${phone.image}" alt="${phone.phone_name}">
+            </div>
+            <div class="namePrice">
+                <h3>${phone.brand}</h3>
+                <span>$ 15.99</span>
+            </div>
+            <h2>${phone.phone_name}</h2>
+            <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+            </div>
+            <div class="button">
+                <button>buy now</button>
             </div>
         </div>
         `

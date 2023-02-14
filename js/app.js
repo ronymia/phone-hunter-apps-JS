@@ -19,15 +19,9 @@ document.getElementById("search-field").addEventListener("keypress", function (e
     };
 });
 
-{/* <h4 class="card-title text-center">${phone.brand}</h4> */ }
-{/* <div class="card-body">
 
-    <div>
-        <h2>${phone.phone_name}</h2>
-        <button onclick="loadPhoneDetail('${phone.slug}')">see details</button>
-    </div>
-</div> */}
-// search result event
+// all phone load html 
+
 const loadPhones = (phones) => {
     // const dataLimit = phones.length = 10;
     phones.forEach(phone => {

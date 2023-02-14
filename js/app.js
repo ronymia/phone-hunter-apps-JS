@@ -34,6 +34,11 @@ const loadPhones = (phones) => {
         <div class="product-card">
             <div class="image">
                 <img src="${phone.image}" alt="${phone.phone_name}">
+                <div>
+                <button type="button"
+                class="phone-details-btn"
+                >view details</button>
+                </div>
             </div>
             <div class="namePrice">
                 <h3>${phone.brand}</h3>
